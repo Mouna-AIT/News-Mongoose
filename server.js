@@ -1,15 +1,15 @@
 // Dependencies
-const express = require("express");
-const mongoose = require("mongoose");
-const axios = require("axios");
-const cheerio = require("cheerio");
+var express = require("express");
+var mongoose = require("mongoose");
+var axios = require("axios");
+var cheerio = require("cheerio");
 
 // Require all models
-const db = require("./models");
-const PORT = process.env.PORT || 3000;
+var db = require("./models");
+var PORT = process.env.PORT || 3000;
 
 // Initialize Express
-const app = express();
+var app = express();
 
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));
@@ -19,7 +19,7 @@ app.use(express.json());
 app.use(express.static("public"));
 
 //set up handlebars
-const exphbs = require("express-handlebars");
+var exphbs = require("express-handlebars");
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
@@ -27,7 +27,7 @@ app.set("view engine", "handlebars");
 mongoose.connection.dropDatabase();
 // Connect to Mongo DB 
 // If deployed, use the deployed database. Otherwise use the local database
-const MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoose-scraper";
+var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoose-scraper";
 mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 
 
@@ -38,7 +38,7 @@ mongoose.connect(MONGODB_URI, { useNewUrlParser: true });
 app.get("/", function(req, res) {
 
     axios.get("https://monocle.com/magazine/").then(function(response) {
-        const $ = cheerio.load(response.data);
+        var $ = cheerio.load(response.data);
         $("article .container").each(function(i, element) {
             let result = {};
             result.title = $(this).children("header").children("h2").text();
