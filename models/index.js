@@ -1,12 +1,6 @@
-const mongoose = require("mongoose");
+  // Exporting an object containing all of our models
 
-const Schema = mongoose.Schema;
-
-const NoteSchema = new Schema({
-    body: String,
-    created_at: { type: Date, default: Date.now }
-});
-
-const Note = mongoose.model("note", NoteSchema);
-
-module.exports = Note;
+  module.exports = {
+      Article: require("./Article"),
+      Note: require("./Note")
+  };
