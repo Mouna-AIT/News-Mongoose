@@ -1,19 +1,20 @@
 body {
-    background-image: url(images/universe.jpg);
+    background-image: linear-gradient(rgba(255, 251, 0, 0.5), rgba(180, 21, 42, 0.5)), url(./images/back.jpg);
     background-size: 100% auto;
     background-size: cover;
-    color: aliceblue;
-    display: -webkit-box;
+    /* color: rgb(232, 236, 240); */
     margin: auto;
-    font-family: "Palatino Linotype", "Book Antiqua", Palatino, serif;
+    font-family: "Palatino Linotype", "Book Antiqua", serif;
 }
 
 h1 {
-    font-size: 50px;
+    color: aliceblue;
+    font-size: 100px;
+    margin-top: 3rem;
 }
 
 button {
-    background-color: darkslategray;
+    background-color: rgb(170, 34, 0);
     color: white;
     padding: 10px 18px;
     border-radius: 10px;
@@ -29,41 +30,69 @@ button {
     overflow: auto;
     width: 95%;
     height: 700px;
+    background-color: rgb(232, 236, 240);
+    border-radius: 10px;
+    padding: 3% 3%;
+    font-family: 'Abel', sans-serif;
 }
-
-
-/*
-#notes {
-    float: right;
-    width: 30%;
-} */
 
 textarea,
 input {
-    display: block;
-    width: 100%;
-    background-color: #FCF5C7;
+    width: 70%;
+    background-color: rgb(233, 229, 204);
+    border: none;
+    border-radius: 5px;
+    padding: 2rem;
 }
 
 input {
     height: 36px;
-    font-size: 24px;
+    font-size: 30px;
 }
 
 textarea {
     height: 200px;
-    font-size: 18px;
-}
-
-#logo {
-    width: 400px;
-    height: 400px;
-    background-repeat: no-repeat, repeat;
-    background-image: url(images/logo.jpg), url(images/universe.jpg);
-    background-blend-mode: lighten;
+    font-size: 30px;
 }
 
 a {
-    color: white;
+    /* color: white; */
     text-decoration: none;
+}
+
+html {
+    color: #ffffff;
+    font-size: 2rem;
+}
+
+.headerblack {
+    color: black;
+}
+
+#savedone {
+    padding: 3% 3%;
+}
+
+.savedart {
+    color: black;
+}
+
+.description {
+    color: dimgrey;
+}
+
+#noteform {
+    margin: 3%;
+}
+
+#PrivousNote {
+    margin-left: 3%;
+}
+
+.delete-note {
+    margin-right: 3%;
+}
+
+.mynote {
+    color: black;
 }

@@ -4,6 +4,7 @@ var bodyParser = require("body-parser");
 var logger = require("morgan");
 var mongoose = require("mongoose");
 var exphbs = require("express-handlebars");
+var path = require("path");
 
 // Scraping tools
 var request = require("request");
@@ -22,7 +23,7 @@ app.use(logger("dev"));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 // Serve the public folder as a static directory
-app.use(express.static("public"));
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.engine(
     "handlebars",
@@ -31,6 +32,7 @@ app.engine(
     })
 );
 app.set("view engine", "handlebars");
+
 
 var MONGODB_URI = process.env.MONGODB_URI || "mongodb://localhost/mongoHeadlines";
 mongoose.Promise = Promise;
@@ -52,7 +54,7 @@ app.get("/scrape", function(req, res) {
             for (var j = 0; j < dbArticle.length; j++) {
                 titleArr.push(dbArticle[j].title)
             }
-            console.log(titleArr);
+            // console.log(titleArr);
             request("https://universe.byu.edu/", function(error, response, html) {
                 if (!error && response.statusCode == 200) {}
 
@@ -82,7 +84,7 @@ app.get("/scrape", function(req, res) {
 app.get("/saved", function(req, res) {
     db.Article.find({})
         .then(function(dbArticle) {
-            console.log(dbArticle);
+            // console.log(dbArticle);
             res.render("saved", {
                 saved: dbArticle
             });
@@ -107,12 +109,17 @@ app.post("/api/saved", function(req, res) {
 
 // Route for grabbing a specific Article by id
 app.get("/articles/:id", function(req, res) {
-    console.log(req.params.id);
+    // console.log(req.params.id);
+    // console.log(mongoose.Types.ObjectId.isValid(req.params.id));
+    if (!mongoose.Types.ObjectId.isValid(req.params.id)) {
+        res.status(400).send('Invalid object id');
+        return;
+    }
     db.Article.findOne({ _id: req.params.id })
         .populate("note")
         .then(function(dbArticle) {
             // If we were able to successfully find an Article
-            console.log(dbArticle);
+            // console.log(dbArticle);
             if (dbArticle) {
                 res.render("articles", {
                     data: dbArticle
@@ -152,7 +159,7 @@ app.post("/articles/:id", function(req, res) {
         .then(function(dbNote) {
             db.Article.findOneAndUpdate({ _id: req.params.id }, { $push: { note: dbNote._id } }, { new: true })
                 .then(function(dbArticle) {
-                    console.log(dbArticle);
+                    // console.log(dbArticle);
                     res.json(dbArticle);
                 })
                 .catch(function(err) {

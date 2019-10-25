@@ -15,7 +15,7 @@ $(document).on("click", ".delete-article", function() {
         })
         .then(function(data) {
             // Log the response
-            console.log(data);
+            // console.log(data);
             location.reload();
         });
 });
@@ -38,11 +38,12 @@ $(document).on("click", ".save-article", function() {
 
 //Go to the notes page for a particular article
 $(document).on("click", ".note-comment", function() {
-    var thisId = $(this).attr("data-id");
-    $.ajax({
-        method: "GET",
-        url: "/articles/" + thisId
-    })
+    let thisId = $(this).attr("data-id");
+    // console.log(thisId);
+    // $.ajax({
+    //         method: "GET",
+    //         url: "/articles/" + thisId
+    //     })
     window.location.replace("/articles/" + thisId);
 });
 
@@ -58,7 +59,7 @@ $(document).on("click", "#submit-note", function() {
             }
         })
         .then(function(data) {
-            console.log(data);
+            // console.log(data);
             window.location.replace("/articles/" + data._id);
         });
 
@@ -74,7 +75,7 @@ $(document).on("click", ".delete-note", function() {
             url: "/articles/" + thisId
         })
         .then(function(data) {
-            console.log(data);
+            // console.log(data);
             location.reload();
         });
 });
