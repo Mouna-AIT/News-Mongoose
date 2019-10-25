@@ -1,11 +1,9 @@
 # News-Mongoose
 All the News That's Fit to Scrape
 
-Create an app that accomplishes the following:
+Whenever a user visits my site, the app will scrape stories from The Daily Universe and display them for the user. Each scraped article will be saved to my application database. 
 
-
-
-Whenever a user visits your site, the app should scrape stories from a news outlet of your choice and display them for the user. Each scraped article should be saved to your application database. At a minimum, the app should scrape and display the following information for each article:
+The app is scraping and displaying the following information for each article:
 
 
  * Headline - the title of the article
@@ -14,11 +12,25 @@ Whenever a user visits your site, the app should scrape stories from a news outl
 
  * URL - the url to the original article
 
- * Feel free to add more content to your database (photos, bylines, and so on).
+The users is also able to leave comments on the articles displayed and revisit them later. The comments are saved to the database as well and associated with their articles. Then the user will also be able to delete comments left on articles. 
 
-Users should also be able to leave comments on the articles displayed and revisit them later. The comments should be saved to the database as well and associated with their articles. Users should also be able to delete comments left on articles. All stored comments should be visible to every user.
+### Heroku Link to the App:
+
+https://still-tundra-19980.herokuapp.com
+
+## **Technologies used:** 👩‍💻
+
+* mongoose
+* NPM packages
+* Node.js
+* Javascript
+* Express 
+* Handle Routing
 
 
 
 
-Beyond these requirements, be creative and have fun with this!
+
+
+
+
